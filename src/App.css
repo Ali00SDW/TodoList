@@ -1,0 +1,29 @@
+/* To-Do */
+
+.mainCard {
+  background: linear-gradient(to bottom, #f9fafb, #a2aeba 80%) !important;
+  border: 2px solid #a8b4c0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.373) !important;
+}
+
+.barButton {
+  margin: 1px !important;
+  margin-top: 5px !important;
+  background-color: #ffffff3a !important;
+  color: #374151 !important;
+  border: 1.5px solid #a8b4c0 !important;
+}
+
+.taskCard {
+  margin-top: 10px !important;
+  background-color: #d1d5db4e !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.373) !important;
+}
+
+/* ==== CUSTUM FONTS ====*/
+@font-face {
+  font-family: ElMessiri;
+  src: url("/public/fonts/ElMessiri-Regular.ttf");
+}
+
+/* ==== // CUSTUM FONTS ====*/
