@@ -14,7 +14,7 @@ function App() {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        background: "linear-gradient(to bottom, #f9fafb, #a2aeba 75%)",
+        background: "linear-gradient(to bottom, #000000, #a2aeba 75%)",
         height: "100vh",
       }}
     >
