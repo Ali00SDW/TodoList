@@ -1,17 +1,19 @@
 /* To-Do */
 
 .mainCard {
-  background: linear-gradient(to bottom, #f9fafb, #a2aeba 80%) !important;
-  border: 2px solid #a8b4c0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.373) !important;
+  background-color: rgba(0, 0, 0, 0)  !important;
+  border: 2px solid #a8b4c000;
+  border-radius: 5px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.453) !important;
 }
 
 .barButton {
-  margin: 1px !important;
+  margin: 3px !important;
   margin-top: 5px !important;
   background-color: #ffffff3a !important;
-  color: #374151 !important;
-  border: 1.5px solid #a8b4c0 !important;
+  color: #ffffff86 !important;
+  border: 1.5px solid #a8b4c000 !important;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.375) ;
 }
 
 .taskCard {

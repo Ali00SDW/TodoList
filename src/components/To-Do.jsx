@@ -60,6 +60,7 @@ export default function ToDo({ todo }) {
       }
     });
     setTodos(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
   // ==== EDIT HANDLERS
   function handleEditClose() {
@@ -80,6 +81,7 @@ export default function ToDo({ todo }) {
     });
     setTodos(updatedTodo);
     setShowEditDialog(false);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
 
   function handleEditClick() {
@@ -168,7 +170,9 @@ export default function ToDo({ todo }) {
                 sx={{
                   textAlign: "left",
                   fontFamily: "ui-serif",
+                  color: "#000000b3",
                 }}
+                onClick={handleEditClick}
               >
                 {todo.title}
               </Typography>
@@ -177,7 +181,9 @@ export default function ToDo({ todo }) {
                 sx={{
                   textAlign: "left",
                   fontFamily: "ui-serif",
+                  color: "#000000b3",
                 }}
+                onClick={handleEditClick}
               >
                 {todo.details}
               </Typography>

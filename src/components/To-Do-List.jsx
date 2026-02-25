@@ -61,7 +61,7 @@ export default function ToDoList() {
         <CardContent>
           <Typography
             variant="h3"
-            sx={{ fontFamily: "ui-serif", color: "#1f2937" }}
+            sx={{ fontFamily: "ui-serif", color: "#f3f3f398", fontWeight:"bold" }}
           >
             My Tasks
           </Typography>
