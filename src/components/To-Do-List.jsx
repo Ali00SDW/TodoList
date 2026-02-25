@@ -22,8 +22,7 @@ import { Grid } from "@mui/material";
 // OTHERS
 import { v4 as uuidv4 } from "uuid";
 import { TodoContext } from "../contexts/todoContext";
-import { useContext } from "react";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 export default function ToDoList() {
   const { todos, setTodos } = useContext(TodoContext);
@@ -34,6 +33,12 @@ export default function ToDoList() {
     return <ToDo key={t.id} todo={t} />;
   });
 
+  useEffect(() => {
+    console.log("done")
+    const storageTodos = JSON.parse(localStorage.getItem("todos"));
+    setTodos(storageTodos);
+  }, []);
+
   function handleAddClick() {
     const newTodo = {
       id: uuidv4(),
@@ -42,13 +47,13 @@ export default function ToDoList() {
       isCompleted: false,
     };
 
-    const updatedTodos = [ ...todos, newTodo ]
-    setTodos(updatedTodos)
-    localStorage.setItem("todos", JSON.stringify(updatedTodos))
+    const updatedTodos = [...todos, newTodo];
+    setTodos(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
     setTitleInput("");
+
   }
 
-  
 
   return (
     <Container maxWidth="sm">

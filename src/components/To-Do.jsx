@@ -40,6 +40,7 @@ export default function ToDo({ todo }) {
       return t;
     });
     setTodos(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
   // ==== DELETE HANDLERS
   function handleDeleteClick() {
@@ -68,7 +69,11 @@ export default function ToDo({ todo }) {
   function handleEditConfirm() {
     const updatedTodo = todos.map((t) => {
       if (t.id == todo.id) {
-        return { ...t, title: updatedTodos.title, details: updatedTodos.details };
+        return {
+          ...t,
+          title: updatedTodos.title,
+          details: updatedTodos.details,
+        };
       } else {
         return t;
       }
