@@ -58,7 +58,7 @@ export default function ToDoList() {
 
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{width:{"lg": '50%', "xs": '80%'}}}>
       <Card className="mainCard" sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography
