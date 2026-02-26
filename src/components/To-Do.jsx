@@ -161,7 +161,7 @@ export default function ToDo({ todo }) {
       </Dialog>
       {/* ==== EDIT MODEL ==== */}
 
-      <Card className="taskCard" sx={{ minWidth: 285, padding: "0" }}>
+      <Card className="taskCard" sx={{ minWidth: 300, padding: "0" }}>
         <CardContent sx={{ padding: 1.5 }}>
           <Grid container spacing={2}>
             <Grid size={8}>
