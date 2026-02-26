@@ -31,15 +31,16 @@ export default function ToDoList() {
 
   const todosJsx = todos.map((t) => {
     return <ToDo key={t.id} todo={t} />;
-  });
+  }) || [];
 
   useEffect(() => {
     console.log("done")
     const storageTodos = JSON.parse(localStorage.getItem("todos"));
-    setTodos(storageTodos);
+    setTodos(storageTodos || []);
   }, []);
 
   function handleAddClick() {
+    if (!titleInput.trim()) return;
     const newTodo = {
       id: uuidv4(),
       title: titleInput,
@@ -47,7 +48,8 @@ export default function ToDoList() {
       isCompleted: false,
     };
 
-    const updatedTodos = [...todos, newTodo];
+    const currentTodos = todos || [];
+    const updatedTodos = [...currentTodos, newTodo];
     setTodos(updatedTodos);
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
     setTitleInput("");
