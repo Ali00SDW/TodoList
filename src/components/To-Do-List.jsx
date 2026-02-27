@@ -52,7 +52,7 @@ export default function ToDoList() {
     todosToBeRendered.map((t) => {
       return <ToDo key={t.id} todo={t} />;
     }) || [];
-
+// useEffect for getting data from local storage
   useEffect(() => {
     console.log("done");
     const storageTodos = JSON.parse(localStorage.getItem("todos"));
