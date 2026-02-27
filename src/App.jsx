@@ -2,6 +2,7 @@ import "./App.css";
 import ToDoList from "./components/To-Do-List";
 import { TodoContext } from "./contexts/todoContext";
 import { useState } from "react";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const initialTodos = [];
 function App() {
@@ -19,7 +20,9 @@ function App() {
       }}
     >
       <TodoContext.Provider value={{ todos, setTodos }}>
-        <ToDoList />
+        <ErrorBoundary>
+          <ToDoList />
+        </ErrorBoundary>
       </TodoContext.Provider>
     </div>
   );

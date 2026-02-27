@@ -12,6 +12,7 @@ import EditIcon from "@mui/icons-material/Edit";
 // ==== REACT
 import { useContext, useState } from "react";
 import { TodoContext } from "../contexts/todoContext";
+import { ThemeProvider } from "@emotion/react";
 // ==== DIALOG
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -164,13 +165,14 @@ export default function ToDo({ todo }) {
       <Card className="taskCard" sx={{ minWidth: 275 }}>
         <CardContent sx={{ padding: 1.5 }}>
           <Grid container spacing={2}>
-            <Grid size={8}>
+            <Grid size={{ xs: 6, sm: 8, lg: 8 }}>
               <Typography
                 variant="h5"
                 sx={{
                   textAlign: "left",
                   fontFamily: "ui-serif",
                   color: "#000000b3",
+                  fontSize: { lg: "auto", xs: "20px" },
                 }}
                 onClick={handleEditClick}
               >
@@ -182,6 +184,7 @@ export default function ToDo({ todo }) {
                   textAlign: "left",
                   fontFamily: "ui-serif",
                   color: "#000000b3",
+                  fontSize: { lg: "auto", xs: "15px" },
                 }}
                 onClick={handleEditClick}
               >

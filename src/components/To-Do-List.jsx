@@ -29,12 +29,13 @@ export default function ToDoList() {
 
   const [titleInput, setTitleInput] = useState("");
 
-  const todosJsx = todos.map((t) => {
-    return <ToDo key={t.id} todo={t} />;
-  }) || [];
+  const todosJsx =
+    todos.map((t) => {
+      return <ToDo key={t.id} todo={t} />;
+    }) || [];
 
   useEffect(() => {
-    console.log("done")
+    console.log("done");
     const storageTodos = JSON.parse(localStorage.getItem("todos"));
     setTodos(storageTodos || []);
   }, []);
@@ -53,17 +54,20 @@ export default function ToDoList() {
     setTodos(updatedTodos);
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
     setTitleInput("");
-
   }
 
-
   return (
-    <Container maxWidth="sm" sx={{width:{"lg": '50%', "xs": '80%'}}}>
+    <Container maxWidth="sm" sx={{ width: { lg: "100%", xs: "100%" } }}>
       <Card className="mainCard" sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography
             variant="h3"
-            sx={{ fontFamily: "ui-serif", color: "#f3f3f398", fontWeight:"bold" }}
+            sx={{
+              fontFamily: "ui-serif",
+              color: "#f3f3f398",
+              fontWeight: "bold",
+              fontSize: { lg: "3.5rem", xs: "2.5rem" },
+            }}
           >
             My Tasks
           </Typography>
@@ -78,13 +82,25 @@ export default function ToDoList() {
             // onChange={handleAlignment}
             aria-label="text alignment"
           >
-            <ToggleButton value="left" className="barButton">
+            <ToggleButton
+              value="left"
+              className="barButton"
+              sx={{ fontSize: { lg: "17px", xs: "10px" } }}
+            >
               All
             </ToggleButton>
-            <ToggleButton value="center" className="barButton">
+            <ToggleButton
+              value="center"
+              className="barButton"
+              sx={{ fontSize: { lg: "17px", xs: "10px" } }}
+            >
               Completed
             </ToggleButton>
-            <ToggleButton value="right" className="barButton">
+            <ToggleButton
+              value="right"
+              className="barButton"
+              sx={{ fontSize: { lg: "17px", xs: "10px" } }}
+            >
               InCompleted
             </ToggleButton>
           </ToggleButtonGroup>
@@ -101,6 +117,7 @@ export default function ToDoList() {
               size={9}
               sx={{
                 background: "#d1d5db99",
+                fontSize: { lg: "17px", xs: "10px" },
               }}
             >
               <TextField
