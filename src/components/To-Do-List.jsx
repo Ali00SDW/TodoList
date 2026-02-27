@@ -28,9 +28,28 @@ export default function ToDoList() {
   const { todos, setTodos } = useContext(TodoContext);
 
   const [titleInput, setTitleInput] = useState("");
+  const [displayTodosType, setDisplayTodosType] = useState("all");
+
+  // fillteration
+  const completedTodos = todos.filter((t) => {
+    return t.isCompleted;
+  });
+  const notCompletedTodos = todos.filter((t) => {
+    return !t.isCompleted;
+  });
+
+  let todosToBeRendered = todos;
+
+  if (displayTodosType == "completed") {
+    todosToBeRendered = completedTodos;
+  } else if (displayTodosType == "incompleted") {
+    todosToBeRendered = notCompletedTodos;
+  } else {
+    todosToBeRendered = todos;
+  }
 
   const todosJsx =
-    todos.map((t) => {
+    todosToBeRendered.map((t) => {
       return <ToDo key={t.id} todo={t} />;
     }) || [];
 
@@ -39,6 +58,10 @@ export default function ToDoList() {
     const storageTodos = JSON.parse(localStorage.getItem("todos"));
     setTodos(storageTodos || []);
   }, []);
+
+  function changeDisplayedType(e) {
+    setDisplayTodosType(e.target.value);
+  }
 
   function handleAddClick() {
     if (!titleInput.trim()) return;
@@ -58,13 +81,17 @@ export default function ToDoList() {
 
   return (
     <Container maxWidth="sm" sx={{ width: { lg: "100%", xs: "100%" } }}>
-      <Card className="mainCard" sx={{ minWidth: 275 }}>
+      <Card
+        className="mainCard"
+        sx={{ minWidth: 275 }}
+        style={{ maxHeight: "80vh", overflow: "scroll" }}
+      >
         <CardContent>
           <Typography
             variant="h3"
             sx={{
               fontFamily: "ui-serif",
-              color: "#f3f3f398",
+              color: "#00000098",
               fontWeight: "bold",
               fontSize: { lg: "3.5rem", xs: "2.5rem" },
             }}
@@ -77,29 +104,45 @@ export default function ToDoList() {
           {/* Button */}
 
           <ToggleButtonGroup
-            // value={alignment}
+            value={displayTodosType}
             exclusive
-            // onChange={handleAlignment}
+            onChange={changeDisplayedType}
             aria-label="text alignment"
+            color="primary"
           >
             <ToggleButton
-              value="left"
-              className="barButton"
-              sx={{ fontSize: { lg: "17px", xs: "10px" } }}
+              value="all"
+              sx={{
+                color: "black",
+                margin: 1,
+                backgroundColor: "#acacac",
+                boxShadow: "0 0 4px 2px #00000068",
+                fontSize: { lg: "17px", xs: "10px" },
+              }}
             >
               All
             </ToggleButton>
             <ToggleButton
-              value="center"
-              className="barButton"
-              sx={{ fontSize: { lg: "17px", xs: "10px" } }}
+              value="completed"
+              sx={{
+                color: "black",
+                margin: 1,
+                backgroundColor: "#acacac",
+                boxShadow: "0 0 4px 2px #00000068",
+                fontSize: { lg: "17px", xs: "10px" },
+              }}
             >
               Completed
             </ToggleButton>
             <ToggleButton
-              value="right"
-              className="barButton"
-              sx={{ fontSize: { lg: "17px", xs: "10px" } }}
+              value="incompleted"
+              sx={{
+                color: "black",
+                margin: 1,
+                backgroundColor: "#acacac",
+                boxShadow: "0 0 4px 2px #00000068",
+                fontSize: { lg: "17px", xs: "10px" },
+              }}
             >
               InCompleted
             </ToggleButton>
@@ -116,6 +159,7 @@ export default function ToDoList() {
             <Grid
               size={9}
               sx={{
+                
                 background: "#d1d5db99",
                 fontSize: { lg: "17px", xs: "10px" },
               }}
@@ -145,6 +189,7 @@ export default function ToDoList() {
                 onClick={() => {
                   handleAddClick();
                 }}
+                disabled={titleInput.length <= 4}
               >
                 push
               </Button>

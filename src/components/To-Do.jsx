@@ -173,6 +173,7 @@ export default function ToDo({ todo }) {
                   fontFamily: "ui-serif",
                   color: "#000000b3",
                   fontSize: { lg: "auto", xs: "20px" },
+                  textDecoration: todo.isCompleted ? "line-through" : "none",
                 }}
                 onClick={handleEditClick}
               >
