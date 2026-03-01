@@ -55,8 +55,8 @@ export default function ToDoList() {
 // useEffect for getting data from local storage
   useEffect(() => {
     console.log("done");
-    const storageTodos = JSON.parse(localStorage.getItem("todos"));
-    setTodos(storageTodos || []);
+    const storageTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    setTodos(storageTodos);
   }, [setTodos]);
 
   function changeDisplayedType(e) {
